@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v3.6.1
-// source: api/note_v1/note.proto
+// source: note.proto
 
 package note_v1
 
@@ -270,5 +270,5 @@ var NoteV1_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "api/note_v1/note.proto",
+	Metadata: "note.proto",
 }

@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.10
 // 	protoc        v3.6.1
-// source: api/note_v1/note.proto
+// source: note.proto
 
 package note_v1
 
@@ -36,7 +36,7 @@ type NoteInfo struct {
 
 func (x *NoteInfo) Reset() {
 	*x = NoteInfo{}
-	mi := &file_api_note_v1_note_proto_msgTypes[0]
+	mi := &file_note_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -48,7 +48,7 @@ func (x *NoteInfo) String() string {
 func (*NoteInfo) ProtoMessage() {}
 
 func (x *NoteInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_api_note_v1_note_proto_msgTypes[0]
+	mi := &file_note_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -61,7 +61,7 @@ func (x *NoteInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NoteInfo.ProtoReflect.Descriptor instead.
 func (*NoteInfo) Descriptor() ([]byte, []int) {
-	return file_api_note_v1_note_proto_rawDescGZIP(), []int{0}
+	return file_note_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *NoteInfo) GetTitle() string {
@@ -104,7 +104,7 @@ type Note struct {
 
 func (x *Note) Reset() {
 	*x = Note{}
-	mi := &file_api_note_v1_note_proto_msgTypes[1]
+	mi := &file_note_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -116,7 +116,7 @@ func (x *Note) String() string {
 func (*Note) ProtoMessage() {}
 
 func (x *Note) ProtoReflect() protoreflect.Message {
-	mi := &file_api_note_v1_note_proto_msgTypes[1]
+	mi := &file_note_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -129,7 +129,7 @@ func (x *Note) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Note.ProtoReflect.Descriptor instead.
 func (*Note) Descriptor() ([]byte, []int) {
-	return file_api_note_v1_note_proto_rawDescGZIP(), []int{1}
+	return file_note_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Note) GetId() int64 {
@@ -172,7 +172,7 @@ type UpdateNoteInfo struct {
 
 func (x *UpdateNoteInfo) Reset() {
 	*x = UpdateNoteInfo{}
-	mi := &file_api_note_v1_note_proto_msgTypes[2]
+	mi := &file_note_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -184,7 +184,7 @@ func (x *UpdateNoteInfo) String() string {
 func (*UpdateNoteInfo) ProtoMessage() {}
 
 func (x *UpdateNoteInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_api_note_v1_note_proto_msgTypes[2]
+	mi := &file_note_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -197,7 +197,7 @@ func (x *UpdateNoteInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateNoteInfo.ProtoReflect.Descriptor instead.
 func (*UpdateNoteInfo) Descriptor() ([]byte, []int) {
-	return file_api_note_v1_note_proto_rawDescGZIP(), []int{2}
+	return file_note_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *UpdateNoteInfo) GetTitle() *wrappers.StringValue {
@@ -237,7 +237,7 @@ type CreateRequest struct {
 
 func (x *CreateRequest) Reset() {
 	*x = CreateRequest{}
-	mi := &file_api_note_v1_note_proto_msgTypes[3]
+	mi := &file_note_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -249,7 +249,7 @@ func (x *CreateRequest) String() string {
 func (*CreateRequest) ProtoMessage() {}
 
 func (x *CreateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_note_v1_note_proto_msgTypes[3]
+	mi := &file_note_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -262,7 +262,7 @@ func (x *CreateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateRequest.ProtoReflect.Descriptor instead.
 func (*CreateRequest) Descriptor() ([]byte, []int) {
-	return file_api_note_v1_note_proto_rawDescGZIP(), []int{3}
+	return file_note_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *CreateRequest) GetId() int64 {
@@ -281,7 +281,7 @@ type CreateResponse struct {
 
 func (x *CreateResponse) Reset() {
 	*x = CreateResponse{}
-	mi := &file_api_note_v1_note_proto_msgTypes[4]
+	mi := &file_note_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -293,7 +293,7 @@ func (x *CreateResponse) String() string {
 func (*CreateResponse) ProtoMessage() {}
 
 func (x *CreateResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_note_v1_note_proto_msgTypes[4]
+	mi := &file_note_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -306,7 +306,7 @@ func (x *CreateResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateResponse.ProtoReflect.Descriptor instead.
 func (*CreateResponse) Descriptor() ([]byte, []int) {
-	return file_api_note_v1_note_proto_rawDescGZIP(), []int{4}
+	return file_note_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *CreateResponse) GetId() int64 {
@@ -325,7 +325,7 @@ type GetRequest struct {
 
 func (x *GetRequest) Reset() {
 	*x = GetRequest{}
-	mi := &file_api_note_v1_note_proto_msgTypes[5]
+	mi := &file_note_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -337,7 +337,7 @@ func (x *GetRequest) String() string {
 func (*GetRequest) ProtoMessage() {}
 
 func (x *GetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_note_v1_note_proto_msgTypes[5]
+	mi := &file_note_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -350,7 +350,7 @@ func (x *GetRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRequest.ProtoReflect.Descriptor instead.
 func (*GetRequest) Descriptor() ([]byte, []int) {
-	return file_api_note_v1_note_proto_rawDescGZIP(), []int{5}
+	return file_note_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetRequest) GetId() int64 {
@@ -369,7 +369,7 @@ type GetResponse struct {
 
 func (x *GetResponse) Reset() {
 	*x = GetResponse{}
-	mi := &file_api_note_v1_note_proto_msgTypes[6]
+	mi := &file_note_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -381,7 +381,7 @@ func (x *GetResponse) String() string {
 func (*GetResponse) ProtoMessage() {}
 
 func (x *GetResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_note_v1_note_proto_msgTypes[6]
+	mi := &file_note_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -394,7 +394,7 @@ func (x *GetResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetResponse.ProtoReflect.Descriptor instead.
 func (*GetResponse) Descriptor() ([]byte, []int) {
-	return file_api_note_v1_note_proto_rawDescGZIP(), []int{6}
+	return file_note_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GetResponse) GetNote() *Note {
@@ -414,7 +414,7 @@ type ListRequest struct {
 
 func (x *ListRequest) Reset() {
 	*x = ListRequest{}
-	mi := &file_api_note_v1_note_proto_msgTypes[7]
+	mi := &file_note_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -426,7 +426,7 @@ func (x *ListRequest) String() string {
 func (*ListRequest) ProtoMessage() {}
 
 func (x *ListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_note_v1_note_proto_msgTypes[7]
+	mi := &file_note_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -439,7 +439,7 @@ func (x *ListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRequest.ProtoReflect.Descriptor instead.
 func (*ListRequest) Descriptor() ([]byte, []int) {
-	return file_api_note_v1_note_proto_rawDescGZIP(), []int{7}
+	return file_note_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ListRequest) GetLimit() int64 {
@@ -465,7 +465,7 @@ type ListResponse struct {
 
 func (x *ListResponse) Reset() {
 	*x = ListResponse{}
-	mi := &file_api_note_v1_note_proto_msgTypes[8]
+	mi := &file_note_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -477,7 +477,7 @@ func (x *ListResponse) String() string {
 func (*ListResponse) ProtoMessage() {}
 
 func (x *ListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_note_v1_note_proto_msgTypes[8]
+	mi := &file_note_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -490,7 +490,7 @@ func (x *ListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListResponse.ProtoReflect.Descriptor instead.
 func (*ListResponse) Descriptor() ([]byte, []int) {
-	return file_api_note_v1_note_proto_rawDescGZIP(), []int{8}
+	return file_note_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *ListResponse) GetNotes() []*Note {
@@ -510,7 +510,7 @@ type UpdateRequest struct {
 
 func (x *UpdateRequest) Reset() {
 	*x = UpdateRequest{}
-	mi := &file_api_note_v1_note_proto_msgTypes[9]
+	mi := &file_note_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -522,7 +522,7 @@ func (x *UpdateRequest) String() string {
 func (*UpdateRequest) ProtoMessage() {}
 
 func (x *UpdateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_note_v1_note_proto_msgTypes[9]
+	mi := &file_note_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -535,7 +535,7 @@ func (x *UpdateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateRequest.ProtoReflect.Descriptor instead.
 func (*UpdateRequest) Descriptor() ([]byte, []int) {
-	return file_api_note_v1_note_proto_rawDescGZIP(), []int{9}
+	return file_note_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *UpdateRequest) GetId() int64 {
@@ -561,7 +561,7 @@ type DeleteRequest struct {
 
 func (x *DeleteRequest) Reset() {
 	*x = DeleteRequest{}
-	mi := &file_api_note_v1_note_proto_msgTypes[10]
+	mi := &file_note_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -573,7 +573,7 @@ func (x *DeleteRequest) String() string {
 func (*DeleteRequest) ProtoMessage() {}
 
 func (x *DeleteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_note_v1_note_proto_msgTypes[10]
+	mi := &file_note_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -586,7 +586,7 @@ func (x *DeleteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteRequest.ProtoReflect.Descriptor instead.
 func (*DeleteRequest) Descriptor() ([]byte, []int) {
-	return file_api_note_v1_note_proto_rawDescGZIP(), []int{10}
+	return file_note_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *DeleteRequest) GetId() int64 {
@@ -596,11 +596,12 @@ func (x *DeleteRequest) GetId() int64 {
 	return 0
 }
 
-var File_api_note_v1_note_proto protoreflect.FileDescriptor
+var File_note_proto protoreflect.FileDescriptor
 
-const file_api_note_v1_note_proto_rawDesc = "" +
+const file_note_proto_rawDesc = "" +
 	"\n" +
-	"\x16api/note_v1/note.proto\x12\anote_v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1egoogle/protobuf/wrappers.proto\"o\n" +
+	"\n" +
+	"note.proto\x12\anote_v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1egoogle/protobuf/wrappers.proto\"o\n" +
 	"\bNoteInfo\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12\x18\n" +
 	"\acontent\x18\x02 \x01(\tR\acontent\x12\x16\n" +
@@ -645,19 +646,19 @@ const file_api_note_v1_note_proto_rawDesc = "" +
 	"\x06Delete\x12\x16.note_v1.DeleteRequest\x1a\x16.google.protobuf.EmptyBGZEgithub.com/AiratS/micro_as_bigtech_course/week_1/grpc/note_v1;note_v1b\x06proto3"
 
 var (
-	file_api_note_v1_note_proto_rawDescOnce sync.Once
-	file_api_note_v1_note_proto_rawDescData []byte
+	file_note_proto_rawDescOnce sync.Once
+	file_note_proto_rawDescData []byte
 )
 
-func file_api_note_v1_note_proto_rawDescGZIP() []byte {
-	file_api_note_v1_note_proto_rawDescOnce.Do(func() {
-		file_api_note_v1_note_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_api_note_v1_note_proto_rawDesc), len(file_api_note_v1_note_proto_rawDesc)))
+func file_note_proto_rawDescGZIP() []byte {
+	file_note_proto_rawDescOnce.Do(func() {
+		file_note_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_note_proto_rawDesc), len(file_note_proto_rawDesc)))
 	})
-	return file_api_note_v1_note_proto_rawDescData
+	return file_note_proto_rawDescData
 }
 
-var file_api_note_v1_note_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
-var file_api_note_v1_note_proto_goTypes = []any{
+var file_note_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_note_proto_goTypes = []any{
 	(*NoteInfo)(nil),             // 0: note_v1.NoteInfo
 	(*Note)(nil),                 // 1: note_v1.Note
 	(*UpdateNoteInfo)(nil),       // 2: note_v1.UpdateNoteInfo
@@ -674,7 +675,7 @@ var file_api_note_v1_note_proto_goTypes = []any{
 	(*wrappers.BoolValue)(nil),   // 13: google.protobuf.BoolValue
 	(*empty.Empty)(nil),          // 14: google.protobuf.Empty
 }
-var file_api_note_v1_note_proto_depIdxs = []int32{
+var file_note_proto_depIdxs = []int32{
 	0,  // 0: note_v1.Note.info:type_name -> note_v1.NoteInfo
 	11, // 1: note_v1.Note.created_at:type_name -> google.protobuf.Timestamp
 	11, // 2: note_v1.Note.updated_at:type_name -> google.protobuf.Timestamp
@@ -702,26 +703,26 @@ var file_api_note_v1_note_proto_depIdxs = []int32{
 	0,  // [0:10] is the sub-list for field type_name
 }
 
-func init() { file_api_note_v1_note_proto_init() }
-func file_api_note_v1_note_proto_init() {
-	if File_api_note_v1_note_proto != nil {
+func init() { file_note_proto_init() }
+func file_note_proto_init() {
+	if File_note_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_note_v1_note_proto_rawDesc), len(file_api_note_v1_note_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_note_proto_rawDesc), len(file_note_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_api_note_v1_note_proto_goTypes,
-		DependencyIndexes: file_api_note_v1_note_proto_depIdxs,
-		MessageInfos:      file_api_note_v1_note_proto_msgTypes,
+		GoTypes:           file_note_proto_goTypes,
+		DependencyIndexes: file_note_proto_depIdxs,
+		MessageInfos:      file_note_proto_msgTypes,
 	}.Build()
-	File_api_note_v1_note_proto = out.File
-	file_api_note_v1_note_proto_goTypes = nil
-	file_api_note_v1_note_proto_depIdxs = nil
+	File_note_proto = out.File
+	file_note_proto_goTypes = nil
+	file_note_proto_depIdxs = nil
 }

@@ -3,6 +3,7 @@ module github.com/AiratS/micro_as_bigtech_course/week_1/grpc
 go 1.25.3
 
 require (
+	github.com/brianvoe/gofakeit/v7 v7.14.0
 	github.com/golang/protobuf v1.5.4
 	google.golang.org/grpc v1.78.0
 	google.golang.org/protobuf v1.36.11
