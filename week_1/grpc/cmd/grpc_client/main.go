@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	address = "localhost:50081"
+	address = "localhost:50051"
 	noteID  = 12
 )
 
