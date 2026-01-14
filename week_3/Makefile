@@ -1,4 +1,7 @@
+include .env
+
 LOCAL_BIN=${CURDIR}/bin
+MIGRATION_DSN="host=localhost port=$(PG_PORT) dbname=$(PG_DATABASE_NAME) user=$(PG_USER) password=$(PG_PASSWORD) sslmode=disable"
 
 install-tools:
 	GOBIN=${LOCAL_BIN} go install google.golang.org/protobuf/cmd/protoc-gen-go
@@ -20,3 +23,9 @@ generate-grpc:
     --go-grpc_opt=paths=source_relative \
 	--plugin=protoc-gen-go-grpc=bin/protoc-gen-go-grpc \
     api/note_v1/note.proto
+
+goose-up:
+	${LOCAL_BIN}/goose -dir ${GOOSE_MIGRATION_DIR} postgres ${MIGRATION_DSN} up -v
+
+goose-down:
+	${LOCAL_BIN}/goose -dir ${GOOSE_MIGRATION_DIR} postgres ${MIGRATION_DSN} down -v
