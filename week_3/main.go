@@ -8,8 +8,8 @@ import (
 	"github.com/brianvoe/gofakeit/v7"
 	"github.com/jackc/pgx/v5/pgxpool"
 
+	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/model"
 	repo "github.com/AiratS/micro_as_bigtech_course/week_3/internal/repository/note"
-	desc "github.com/AiratS/micro_as_bigtech_course/week_3/pkg/note_v1"
 )
 
 const (
@@ -24,7 +24,7 @@ func main() {
 	}
 
 	noteRepo := repo.NewRepository(pool)
-	id, err := noteRepo.Create(ctx, &desc.NoteInfo{
+	id, err := noteRepo.Create(ctx, &model.NoteInfo{
 		Title:   gofakeit.City(),
 		Content: gofakeit.FarmAnimal(),
 	})

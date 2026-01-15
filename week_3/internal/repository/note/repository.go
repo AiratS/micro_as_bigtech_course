@@ -7,10 +7,11 @@ import (
 
 	sq "github.com/Masterminds/squirrel"
 	"github.com/jackc/pgx/v5/pgxpool"
-	"google.golang.org/protobuf/types/known/timestamppb"
 
+	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/model"
 	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/repository"
-	desc "github.com/AiratS/micro_as_bigtech_course/week_3/pkg/note_v1"
+	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/repository/note/converter"
+	repoModel "github.com/AiratS/micro_as_bigtech_course/week_3/internal/repository/note/model"
 )
 
 const (
@@ -33,7 +34,7 @@ func NewRepository(db *pgxpool.Pool) repository.NoteRepository {
 	}
 }
 
-func (r *repo) Create(ctx context.Context, info *desc.NoteInfo) (int64, error) {
+func (r *repo) Create(ctx context.Context, info *model.NoteInfo) (int64, error) {
 	builderInsert := sq.Insert(tableName).
 		PlaceholderFormat(sq.Dollar).
 		Columns(titleColumn, contentColumn).
@@ -62,7 +63,7 @@ type noteType struct {
 	UpdatedAt sql.NullTime
 }
 
-func (r *repo) Get(ctx context.Context, id int64) (*desc.Note, error) {
+func (r *repo) Get(ctx context.Context, id int64) (*model.Note, error) {
 	builderSelect := sq.Select(idColumn, titleColumn, contentColumn, createdAtColumn, updatedAtColumn).
 		PlaceholderFormat(sq.Dollar).
 		From(tableName).
@@ -74,23 +75,12 @@ func (r *repo) Get(ctx context.Context, id int64) (*desc.Note, error) {
 		return nil, err
 	}
 
-	var note noteType
+	var note repoModel.Note
 	err = r.db.QueryRow(ctx, query, args...).
-		Scan(&note.ID, &note.Title, &note.Content, &note.CreatedAt, &note.UpdatedAt)
+		Scan(&note.ID, &note.Info.Title, &note.Info.Content, &note.CreatedAt, &note.UpdatedAt)
 	if err != nil {
 		return nil, err
 	}
 
-	descNote := desc.Note{
-		Info: &desc.NoteInfo{},
-	}
-	descNote.Id = note.ID
-	descNote.Info.Title = note.Title
-	descNote.Info.Content = note.Content
-	descNote.CreatedAt = timestamppb.New(note.CreatedAt)
-	if note.UpdatedAt.Valid {
-		descNote.UpdatedAt = timestamppb.New(note.UpdatedAt.Time)
-	}
-
-	return &descNote, nil
+	return converter.ToNoteFromRepo(&note), nil
 }

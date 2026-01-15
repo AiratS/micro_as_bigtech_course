@@ -12,6 +12,7 @@ tool (
 
 require (
 	github.com/Masterminds/squirrel v1.5.4
+	github.com/brianvoe/gofakeit/v7 v7.14.0
 	github.com/jackc/pgx/v5 v5.7.5
 	google.golang.org/grpc v1.78.0
 	google.golang.org/protobuf v1.36.11
@@ -23,7 +24,6 @@ require (
 	github.com/ClickHouse/clickhouse-go/v2 v2.40.1 // indirect
 	github.com/andybalholm/brotli v1.2.0 // indirect
 	github.com/antlr4-go/antlr/v4 v4.13.0 // indirect
-	github.com/brianvoe/gofakeit/v7 v7.14.0 // indirect
 	github.com/coder/websocket v1.8.12 // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/elastic/go-sysinfo v1.15.4 // indirect
