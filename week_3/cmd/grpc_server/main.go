@@ -6,6 +6,7 @@ import (
 	"log"
 	"net"
 
+	"github.com/AiratS/micro_as_bigtech_course/week_3/config"
 	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/converter"
 	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/service"
 	desc "github.com/AiratS/micro_as_bigtech_course/week_3/pkg/note_v1"
@@ -60,6 +61,11 @@ const (
 )
 
 func main() {
+	config.Load(".env")
+
+	fmt.Println(config.NewPGConfig())
+
+	return
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", grpcPort))
 	if err != nil {
 		log.Fatalf("Failed to listen: %v", err)
