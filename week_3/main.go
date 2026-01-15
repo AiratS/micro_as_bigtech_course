@@ -10,6 +10,7 @@ import (
 
 	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/model"
 	repo "github.com/AiratS/micro_as_bigtech_course/week_3/internal/repository/note"
+	service "github.com/AiratS/micro_as_bigtech_course/week_3/internal/service/note"
 )
 
 const (
@@ -24,20 +25,17 @@ func main() {
 	}
 
 	noteRepo := repo.NewRepository(pool)
-	id, err := noteRepo.Create(ctx, &model.NoteInfo{
+
+	serv := service.NewService(noteRepo)
+
+	id, err := serv.Create(ctx, &model.NoteInfo{
 		Title:   gofakeit.City(),
-		Content: gofakeit.FarmAnimal(),
+		Content: gofakeit.Animal(),
 	})
+
 	if err != nil {
-		log.Fatalf("create err: %v", err)
+		log.Fatalf("faild to created: %v", err)
 	}
 
 	fmt.Println(id)
-
-	n, err := noteRepo.Get(ctx, id)
-	if err != nil {
-		log.Fatalf("create err: %v", err)
-	}
-
-	fmt.Println("%v", n)
 }
