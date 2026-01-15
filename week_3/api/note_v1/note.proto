@@ -38,7 +38,7 @@ message UpdateNoteInfo {
 }
 
 message CreateRequest {
-    int64 id = 1;
+    NoteInfo info = 1;
 }
 
 message CreateResponse {

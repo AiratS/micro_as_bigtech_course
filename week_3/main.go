@@ -23,6 +23,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to connect db: %v", err)
 	}
+	defer pool.Close()
 
 	noteRepo := repo.NewRepository(pool)
 
