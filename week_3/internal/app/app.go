@@ -2,6 +2,7 @@ package app
 
 import (
 	"context"
+	"log"
 	"net"
 
 	"github.com/AiratS/micro_as_bigtech_course/week_3/config"
@@ -84,6 +85,7 @@ func (a *App) runGRPCServer() error {
 		return err
 	}
 
+	log.Println("App is running on address: ", a.serviceProvider.GRPCConfig().Address())
 	err = a.grpcServer.Serve(lis)
 	if err != nil {
 		return err
