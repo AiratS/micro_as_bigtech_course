@@ -2,12 +2,10 @@ package note
 
 import (
 	"context"
-	"database/sql"
-	"time"
 
 	sq "github.com/Masterminds/squirrel"
-	"github.com/jackc/pgx/v5/pgxpool"
 
+	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/client/db"
 	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/model"
 	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/repository"
 	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/repository/note/converter"
@@ -25,12 +23,12 @@ const (
 )
 
 type repo struct {
-	db *pgxpool.Pool
+	dbClient db.Client
 }
 
-func NewRepository(db *pgxpool.Pool) repository.NoteRepository {
+func NewRepository(dbClient db.Client) repository.NoteRepository {
 	return &repo{
-		db: db,
+		dbClient: dbClient,
 	}
 }
 
@@ -46,21 +44,18 @@ func (r *repo) Create(ctx context.Context, info *model.NoteInfo) (int64, error) 
 		return 0, err
 	}
 
+	q := db.Query{
+		Name:     "create.note",
+		QueryRaw: query,
+	}
+
 	var id int64
-	err = r.db.QueryRow(ctx, query, args...).Scan(&id)
+	err = r.dbClient.DB().ScanOneContext(ctx, &id, q, args...)
 	if err != nil {
 		return 0, err
 	}
 
 	return id, nil
-}
-
-type noteType struct {
-	ID        int64
-	Title     string
-	Content   string
-	CreatedAt time.Time
-	UpdatedAt sql.NullTime
 }
 
 func (r *repo) Get(ctx context.Context, id int64) (*model.Note, error) {
@@ -76,8 +71,12 @@ func (r *repo) Get(ctx context.Context, id int64) (*model.Note, error) {
 	}
 
 	var note repoModel.Note
-	err = r.db.QueryRow(ctx, query, args...).
-		Scan(&note.ID, &note.Info.Title, &note.Info.Content, &note.CreatedAt, &note.UpdatedAt)
+	q := db.Query{
+		Name:     "get.note",
+		QueryRaw: query,
+	}
+
+	err = r.dbClient.DB().ScanOneContext(ctx, &note, q, args...)
 	if err != nil {
 		return nil, err
 	}

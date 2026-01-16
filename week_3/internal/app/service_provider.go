@@ -6,19 +6,20 @@ import (
 
 	"github.com/AiratS/micro_as_bigtech_course/week_3/config"
 	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/api/note"
+	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/client/db"
+	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/client/pg"
 	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/closer"
 	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/repository"
 	noteRepo "github.com/AiratS/micro_as_bigtech_course/week_3/internal/repository/note"
 	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/service"
 	noteService "github.com/AiratS/micro_as_bigtech_course/week_3/internal/service/note"
-	"github.com/jackc/pgx/v5/pgxpool"
 )
 
 type serviceProvider struct {
 	pgConfig   config.PGConfig
 	grpcConfig config.GRPCConfig
 
-	dbPool         *pgxpool.Pool
+	dbClient       db.Client
 	noteRepository repository.NoteRepository
 
 	noteService service.NoteService
@@ -56,27 +57,29 @@ func (sp *serviceProvider) GRPCConfig() config.GRPCConfig {
 	return sp.grpcConfig
 }
 
-func (sp *serviceProvider) DBPool(ctx context.Context) *pgxpool.Pool {
-	if sp.dbPool == nil {
-		pool, err := pgxpool.New(ctx, sp.PGConfig().DSN())
+func (sp *serviceProvider) DBClient(ctx context.Context) db.Client {
+	if sp.dbClient == nil {
+		client, err := pg.New(ctx, sp.PGConfig().DSN())
 		if err != nil {
 			log.Fatalf("failed to connect to db: %v", err)
 		}
 
-		closer.Add(func() error {
-			pool.Close()
-			return nil
-		})
+		err = client.DB().Ping(ctx)
+		if err != nil {
+			log.Fatalf("failed to ping db: %v", err)
+		}
 
-		sp.dbPool = pool
+		closer.Add(client.Close)
+
+		sp.dbClient = client
 	}
 
-	return sp.dbPool
+	return sp.dbClient
 }
 
 func (sp *serviceProvider) NoteRepository(ctx context.Context) repository.NoteRepository {
 	if sp.noteRepository == nil {
-		sp.noteRepository = noteRepo.NewRepository(sp.DBPool(ctx))
+		sp.noteRepository = noteRepo.NewRepository(sp.DBClient(ctx))
 	}
 
 	return sp.noteRepository
