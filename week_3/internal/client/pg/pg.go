@@ -65,8 +65,16 @@ func (p *pg) Ping(ctx context.Context) error {
 	return p.dbc.Ping(ctx)
 }
 
+func (p *pg) BeginTx(ctx context.Context, txOpts pgx.TxOptions) (pgx.Tx, error) {
+	return p.dbc.BeginTx(ctx, txOpts)
+}
+
 func (p *pg) Close() {
 	p.dbc.Close()
+}
+
+func MakeContextTx(ctx context.Context, tx pgx.Tx) context.Context {
+	return context.WithValue(ctx, db.TxKey, tx)
 }
 
 func logQuery(q db.Query) {

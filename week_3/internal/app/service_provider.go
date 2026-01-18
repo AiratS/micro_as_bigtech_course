@@ -7,6 +7,7 @@ import (
 	"github.com/AiratS/micro_as_bigtech_course/week_3/config"
 	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/api/note"
 	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/client/db"
+	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/client/db/transaction"
 	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/client/pg"
 	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/closer"
 	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/repository"
@@ -20,6 +21,7 @@ type serviceProvider struct {
 	grpcConfig config.GRPCConfig
 
 	dbClient       db.Client
+	txManager      db.TxManager
 	noteRepository repository.NoteRepository
 
 	noteService service.NoteService
@@ -85,10 +87,19 @@ func (sp *serviceProvider) NoteRepository(ctx context.Context) repository.NoteRe
 	return sp.noteRepository
 }
 
+func (sp *serviceProvider) TxManager(ctx context.Context) db.TxManager {
+	if sp.txManager == nil {
+		sp.txManager = transaction.NewTxManager(sp.DBClient(ctx).DB())
+	}
+
+	return sp.txManager
+}
+
 func (sp *serviceProvider) NoteService(ctx context.Context) service.NoteService {
 	if sp.noteService == nil {
 		sp.noteService = noteService.NewService(
 			sp.NoteRepository(ctx),
+			sp.TxManager(ctx),
 		)
 	}
 
