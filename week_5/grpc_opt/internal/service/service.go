@@ -1,0 +1,12 @@
+package service
+
+import (
+	"context"
+
+	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/model"
+)
+
+type NoteService interface {
+	Create(ctx context.Context, noteInfo *model.NoteInfo) (int64, error)
+	Get(ctx context.Context, id int64) (*model.Note, error)
+}
