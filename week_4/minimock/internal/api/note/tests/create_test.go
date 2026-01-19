@@ -2,6 +2,7 @@ package tests
 
 import (
 	"context"
+	"fmt"
 	"testing"
 
 	"github.com/AiratS/micro_as_bigtech_course/week_3/internal/api/note"
@@ -28,19 +29,26 @@ func TestCreate(t *testing.T) {
 	mc := minimock.NewController(t)
 
 	id := gofakeit.Int64()
+	title := gofakeit.City()
+	content := gofakeit.Animal()
 
 	req := &desc.CreateRequest{
 		Info: &desc.NoteInfo{
-			Title:    gofakeit.City(),
-			Content:  gofakeit.City(),
-			Author:   gofakeit.Name(),
-			IsPublic: gofakeit.Bool(),
+			Title:   title,
+			Content: content,
 		},
 	}
 
 	res := &desc.CreateResponse{
 		Id: id,
 	}
+
+	info := &model.NoteInfo{
+		Title:   title,
+		Content: content,
+	}
+
+	serviceErr := fmt.Errorf("service error")
 
 	tests := []struct {
 		name            string
@@ -50,7 +58,7 @@ func TestCreate(t *testing.T) {
 		noteServiceMock noteServiceMockFunc
 	}{
 		{
-			name: "No error",
+			name: "Success case",
 			args: args{
 				ctx: ctx,
 				req: req,
@@ -59,18 +67,36 @@ func TestCreate(t *testing.T) {
 			err:  nil,
 			noteServiceMock: func(mc *minimock.Controller) service.NoteService {
 				mock := mocks.NewNoteServiceMock(mc)
-				mock.CreateMock.Expect(ctx, &model.NoteInfo{}).Return(id, nil)
+				mock.CreateMock.Expect(ctx, info).Return(id, nil)
+				return mock
+			},
+		},
+		{
+			name: "Error case",
+			args: args{
+				ctx: ctx,
+				req: req,
+			},
+			want: nil,
+			err:  serviceErr,
+			noteServiceMock: func(mc *minimock.Controller) service.NoteService {
+				mock := mocks.NewNoteServiceMock(mc)
+				mock.CreateMock.Expect(ctx, info).Return(0, serviceErr)
 				return mock
 			},
 		},
 	}
 
 	for _, test := range tests {
-		t.Run("First", func(t *testing.T) {
+		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			mock := test.noteServiceMock(mc)
 			api := note.NewImplementation(mock)
-			api.Create(ctx, req)
-			require.Equal(t, res, req)
+			newID, err := api.Create(ctx, req)
+
+			require.Equal(t, test.err, err)
+			require.Equal(t, test.want, newID)
 		})
 	}
 }
