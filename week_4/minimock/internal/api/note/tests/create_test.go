@@ -87,16 +87,18 @@ func TestCreate(t *testing.T) {
 		},
 	}
 
-	for _, test := range tests {
-		t.Run(test.name, func(t *testing.T) {
+	for _, tt := range tests {
+		tt := tt
+
+		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			mock := test.noteServiceMock(mc)
+			mock := tt.noteServiceMock(mc)
 			api := note.NewImplementation(mock)
 			newID, err := api.Create(ctx, req)
 
-			require.Equal(t, test.err, err)
-			require.Equal(t, test.want, newID)
+			require.Equal(t, tt.err, err)
+			require.Equal(t, tt.want, newID)
 		})
 	}
 }

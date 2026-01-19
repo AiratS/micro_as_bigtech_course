@@ -19,6 +19,7 @@ import (
 )
 
 func TestGet(t *testing.T) {
+	t.Parallel()
 
 	type noteServiceMockFunc func(mc *minimock.Controller) service.NoteService
 	type args struct {
@@ -104,17 +105,19 @@ func TestGet(t *testing.T) {
 		},
 	}
 
-	for _, test := range tests {
-		t.Run(test.name, func(t *testing.T) {
+	for _, tt := range tests {
+		tt := tt
+
+		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()
 
-			noteServiceMock := test.noteServiceMock(mc)
+			noteServiceMock := tt.noteServiceMock(mc)
 
 			api := note.NewImplementation(noteServiceMock)
 			info, err := api.Get(ctx, req)
 
-			require.Equal(t, test.err, err)
-			require.Equal(t, test.want, info)
+			require.Equal(t, tt.err, err)
+			require.Equal(t, tt.want, info)
 		})
 	}
 }
