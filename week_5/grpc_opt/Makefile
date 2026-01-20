@@ -13,16 +13,18 @@ get-deps:
 	go get -u google.golang.org/protobuf/cmd/protoc-gen-go
 	go get -u google.golang.org/grpc/cmd/protoc-gen-go-grpc
 
-generate-grpc:
+generate-note-api:
 	mkdir -p pkg/note_v1
 	protoc \
-    --proto_path api/note_v1 \
+    --proto_path api/note_v1 --proto_path vendor.protogen \
     --go_out=pkg/note_v1 \
 	--plugin=protoc-gen-go=bin/protoc-gen-go \
     --go_opt=paths=source_relative \
     --go-grpc_out=pkg/note_v1 \
     --go-grpc_opt=paths=source_relative \
 	--plugin=protoc-gen-go-grpc=bin/protoc-gen-go-grpc \
+	--grpc-gateway_out=pkg/note_v1 --grpc-gateway_opt=paths=source_relative \
+	--plugin=protoc-gen-grpc-gateway=bin/protoc-gen-grpc-gateway \
     api/note_v1/note.proto
 
 goose-up:

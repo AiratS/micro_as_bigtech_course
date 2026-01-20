@@ -10,9 +10,10 @@ import (
 func (s *noteService) Create(ctx context.Context, noteInfo *model.NoteInfo) (int64, error) {
 	var id int64
 	err := s.txManager.ReadCommitted(ctx, func(ctx context.Context) error {
-		id, err := s.noteRepository.Create(ctx, noteInfo)
-		if err != nil {
-			return err
+		var errTx error
+		id, errTx = s.noteRepository.Create(ctx, noteInfo)
+		if errTx != nil {
+			return errTx
 		}
 
 		note, err := s.noteRepository.Get(ctx, id)
@@ -23,6 +24,8 @@ func (s *noteService) Create(ctx context.Context, noteInfo *model.NoteInfo) (int
 		log.Printf("note data: %v", note)
 		return nil
 	})
+
+	log.Printf("note err: %v", err)
 
 	if err != nil {
 		return 0, err

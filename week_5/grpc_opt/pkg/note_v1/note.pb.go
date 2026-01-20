@@ -10,6 +10,7 @@ import (
 	empty "github.com/golang/protobuf/ptypes/empty"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	wrappers "github.com/golang/protobuf/ptypes/wrappers"
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -601,7 +602,7 @@ var File_note_proto protoreflect.FileDescriptor
 const file_note_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"note.proto\x12\anote_v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1egoogle/protobuf/wrappers.proto\"o\n" +
+	"note.proto\x12\anote_v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1cgoogle/api/annotations.proto\"o\n" +
 	"\bNoteInfo\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12\x18\n" +
 	"\acontent\x18\x02 \x01(\tR\acontent\x12\x16\n" +
@@ -637,10 +638,11 @@ const file_note_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12+\n" +
 	"\x04info\x18\x02 \x01(\v2\x17.note_v1.UpdateNoteInfoR\x04info\"\x1f\n" +
 	"\rDeleteRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id2\x9e\x02\n" +
-	"\x06NoteV1\x129\n" +
-	"\x06Create\x12\x16.note_v1.CreateRequest\x1a\x17.note_v1.CreateResponse\x120\n" +
-	"\x03Get\x12\x13.note_v1.GetRequest\x1a\x14.note_v1.GetResponse\x123\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id2\xcc\x02\n" +
+	"\x06NoteV1\x12U\n" +
+	"\x06Create\x12\x16.note_v1.CreateRequest\x1a\x17.note_v1.CreateResponse\"\x1a\x82\xd3\xe4\x93\x02\x14:\x01*\"\x0f/note/v1/create\x12B\n" +
+	"\x03Get\x12\x13.note_v1.GetRequest\x1a\x14.note_v1.GetResponse\"\x10\x82\xd3\xe4\x93\x02\n" +
+	"\x12\b/note/v1\x123\n" +
 	"\x04List\x12\x14.note_v1.ListRequest\x1a\x15.note_v1.ListResponse\x128\n" +
 	"\x06Update\x12\x16.note_v1.UpdateRequest\x1a\x16.google.protobuf.Empty\x128\n" +
 	"\x06Delete\x12\x16.note_v1.DeleteRequest\x1a\x16.google.protobuf.EmptyBGZEgithub.com/AiratS/micro_as_bigtech_course/week_1/grpc/note_v1;note_v1b\x06proto3"
