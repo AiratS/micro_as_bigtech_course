@@ -7,6 +7,7 @@
 package note_v1
 
 import (
+	_ "github.com/envoyproxy/protoc-gen-validate/validate"
 	empty "github.com/golang/protobuf/ptypes/empty"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	wrappers "github.com/golang/protobuf/ptypes/wrappers"
@@ -602,9 +603,9 @@ var File_note_proto protoreflect.FileDescriptor
 const file_note_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"note.proto\x12\anote_v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1cgoogle/api/annotations.proto\"o\n" +
-	"\bNoteInfo\x12\x14\n" +
-	"\x05title\x18\x01 \x01(\tR\x05title\x12\x18\n" +
+	"note.proto\x12\anote_v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x17validate/validate.proto\"z\n" +
+	"\bNoteInfo\x12\x1f\n" +
+	"\x05title\x18\x01 \x01(\tB\t\xfaB\x06r\x04\x10\x01\x182R\x05title\x12\x18\n" +
 	"\acontent\x18\x02 \x01(\tR\acontent\x12\x16\n" +
 	"\x06author\x18\x03 \x01(\tR\x06author\x12\x1b\n" +
 	"\tis_public\x18\x04 \x01(\bR\bisPublic\"\xb3\x01\n" +

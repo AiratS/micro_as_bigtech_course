@@ -19,7 +19,10 @@ require (
 	google.golang.org/protobuf v1.36.11
 )
 
-require github.com/rs/cors v1.11.1
+require (
+	github.com/envoyproxy/protoc-gen-validate v1.2.1
+	github.com/rs/cors v1.11.1
+)
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect

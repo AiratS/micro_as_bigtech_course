@@ -8,6 +8,7 @@ install-tools:
 	GOBIN=${LOCAL_BIN} go install google.golang.org/grpc/cmd/protoc-gen-go-grpc
 	GOBIN=${LOCAL_BIN} go install github.com/pressly/goose/v3/cmd/goose@latest
 	GOBIN=$(LOCAL_BIN) go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway@v2.20.0
+	GOBIN=$(LOCAL_BIN) go install github.com/envoyproxy/protoc-gen-validate@v1.0.4
 
 get-deps:
 	go get -u google.golang.org/protobuf/cmd/protoc-gen-go
@@ -25,6 +26,8 @@ generate-note-api:
 	--plugin=protoc-gen-go-grpc=bin/protoc-gen-go-grpc \
 	--grpc-gateway_out=pkg/note_v1 --grpc-gateway_opt=paths=source_relative \
 	--plugin=protoc-gen-grpc-gateway=bin/protoc-gen-grpc-gateway \
+	--validate_out lang=go:pkg/note_v1 --validate_opt=paths=source_relative \
+	--plugin=protoc-gen-validate=bin/protoc-gen-validate \
     api/note_v1/note.proto
 
 goose-up:
@@ -34,6 +37,12 @@ goose-down:
 	${LOCAL_BIN}/goose -dir ${GOOSE_MIGRATION_DIR} postgres ${MIGRATION_DSN} down -v
 
 vendor-proto:
+	@if [ ! -d vendor.protogen/validate ]; then \
+			mkdir -p vendor.protogen/validate &&\
+			git clone https://github.com/envoyproxy/protoc-gen-validate vendor.protogen/protoc-gen-validate &&\
+			mv vendor.protogen/protoc-gen-validate/validate/*.proto vendor.protogen/validate &&\
+			rm -rf vendor.protogen/protoc-gen-validate ;\
+	fi
 	@if [ ! -d vendor.protogen/google ]; then \
 		git clone https://github.com/googleapis/googleapis vendor.protogen/googleapis && \
 		mkdir -p vendor.protogen/google/ && \
