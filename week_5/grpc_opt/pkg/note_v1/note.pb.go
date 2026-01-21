@@ -11,6 +11,7 @@ import (
 	empty "github.com/golang/protobuf/ptypes/empty"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	wrappers "github.com/golang/protobuf/ptypes/wrappers"
+	_ "github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2/options"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -603,7 +604,7 @@ var File_note_proto protoreflect.FileDescriptor
 const file_note_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"note.proto\x12\anote_v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x17validate/validate.proto\"z\n" +
+	"note.proto\x12\anote_v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1egoogle/protobuf/wrappers.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x17validate/validate.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\"z\n" +
 	"\bNoteInfo\x12\x1f\n" +
 	"\x05title\x18\x01 \x01(\tB\t\xfaB\x06r\x04\x10\x01\x182R\x05title\x12\x18\n" +
 	"\acontent\x18\x02 \x01(\tR\acontent\x12\x16\n" +
@@ -646,7 +647,9 @@ const file_note_proto_rawDesc = "" +
 	"\x12\b/note/v1\x123\n" +
 	"\x04List\x12\x14.note_v1.ListRequest\x1a\x15.note_v1.ListResponse\x128\n" +
 	"\x06Update\x12\x16.note_v1.UpdateRequest\x1a\x16.google.protobuf.Empty\x128\n" +
-	"\x06Delete\x12\x16.note_v1.DeleteRequest\x1a\x16.google.protobuf.EmptyBGZEgithub.com/AiratS/micro_as_bigtech_course/week_1/grpc/note_v1;note_v1b\x06proto3"
+	"\x06Delete\x12\x16.note_v1.DeleteRequest\x1a\x16.google.protobuf.EmptyB\xb8\x01\x92An\x123\n" +
+	"\bNote API\" \n" +
+	"\x05Airat\x1a\x17ayrat.sirazov@yandex.ru2\x051.0.0\x1a\x0flocalhost:50062*\x02\x01\x022\x10application/json:\x10application/jsonZEgithub.com/AiratS/micro_as_bigtech_course/week_1/grpc/note_v1;note_v1b\x06proto3"
 
 var (
 	file_note_proto_rawDescOnce sync.Once

@@ -21,6 +21,7 @@ require (
 
 require (
 	github.com/envoyproxy/protoc-gen-validate v1.2.1
+	github.com/rakyll/statik v0.1.8
 	github.com/rs/cors v1.11.1
 )
 
