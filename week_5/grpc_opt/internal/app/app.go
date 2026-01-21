@@ -155,7 +155,7 @@ func (a *App) runGRPCServer() error {
 }
 
 func (a *App) runHTTPServer() error {
-	log.Printf("http servver is running on: %s", a.serviceProvider.GRPCConfig().Address())
+	log.Printf("http servver is running on: %s", a.serviceProvider.HTTPConfig().Address())
 
 	err := a.httpServer.ListenAndServe()
 	if err != nil {
