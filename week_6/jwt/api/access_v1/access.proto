@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package access_v1;
+
+option go_package = "github.com/airats/micro_as_bigtech_course/week_6/jwt/pkg/access_v1;access_v1";
+
+service AccessV1 {
+
+};
