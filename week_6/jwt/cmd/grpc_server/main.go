@@ -129,7 +129,7 @@ func (s *serverAccess) Check(ctx context.Context, req *descAccess.CheckRequest) 
 	}
 
 	accessibleRoles := map[string]string{
-		"note_": "admin",
+		"note_v1.NoteV1.Get": "admin",
 	}
 
 	role, ok := accessibleRoles[req.GetEndpointAddress()]
