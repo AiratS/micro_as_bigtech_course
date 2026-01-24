@@ -16,3 +16,13 @@ generate-note-api:
 	--go-grpc_out=pkg/note_v1 --go-grpc_opt=paths=source_relative \
 	--plugin=protoc-gen-go-grpc=bin/protoc-gen-go-grpc \
 	api/note_v1/note.proto
+
+grpc-load-test:
+	ghz \
+		--proto api/note_v1/note.proto \
+		--call note_v1.NoteV1.Get \
+		--data '{"id": 1}' \
+		--rps 200 \
+		--total 30000 \
+		--insecure \
+		localhost:50061
