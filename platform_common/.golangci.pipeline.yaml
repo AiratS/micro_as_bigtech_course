@@ -1,0 +1,28 @@
+version: "2"
+
+linters:
+  # Uses the curated list of standard linters
+  default: standard 
+  # Other linters are disabled by default
+  # enable: []
+  # disable: []
+
+# Issues filtering and options
+issues:
+  # List of regexps of issue texts to exclude, empty list by default.
+  exclude-rules: []
+  # Maximum issues count per one linter. Default is 50.
+  max-issues-per-linter: 50
+  # Maximum count of issues with the same text. Default is 3.
+  max-same-issues: 3
+
+# Run options
+run:
+  # Timeout, cpu quota, etc. have default values
+  # relative-path-mode: cfg # Default in v2
+  # timeout: 1m # Example default
+
+# Cache options
+cache:
+  # Enabled by default
+  # path: "" # Uses default user cache directory
