@@ -1,5 +1,7 @@
 github.com/AiratS/micro_as_bigtech_course/platform_common v0.0.0-20260129142715-313f4a534e32 h1:ndAZIyssObdEpAlAbD3bJ+4Y0Fn5hahdDS83IyCU030=
 github.com/AiratS/micro_as_bigtech_course/platform_common v0.0.0-20260129142715-313f4a534e32/go.mod h1:kRRYdJdhJ9oKagm+m/3QvF66NtsTs/LVpQNHGUa7KIQ=
+github.com/brianvoe/gofakeit v3.18.0+incompatible h1:wDOmHc9DLG4nRjUVVaxA+CEglKOW72Y5+4WNxUIkjM8=
+github.com/brianvoe/gofakeit v3.18.0+incompatible/go.mod h1:kfwdRA90vvNhPutZWfH7WPaDzUjz+CZFqG+rPkOjGOc=
 github.com/go-logr/logr v1.4.2 h1:6pFjapn8bFcIbiKo3XT4j/BhANplGihG6tvd+8rYgrY=
 github.com/go-logr/logr v1.4.2/go.mod h1:9T104GzyrTigFIr8wt5mBrctHMim0Nb2HLGrmQ40KvY=
 github.com/go-logr/stdr v1.2.2 h1:hSWxHoqTgW2S2qGc0LTAI563KZ5YKYRhT3MFKZMbjag=

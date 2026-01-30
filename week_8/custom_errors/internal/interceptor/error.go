@@ -2,12 +2,14 @@ package interceptor
 
 import (
 	"context"
+	"errors"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/status"
 
 	"github.com/AiratS/micro_as_bigtech_course/platform_common/pkg/sys"
 	"github.com/AiratS/micro_as_bigtech_course/platform_common/pkg/sys/codes"
+	"github.com/AiratS/micro_as_bigtech_course/platform_common/pkg/sys/validate"
 	grpcCodes "google.golang.org/grpc/codes"
 )
 
@@ -27,6 +29,23 @@ func ErrorCodesInterceptor(ctx context.Context, req any, info *grpc.UnaryServerI
 		code := toGRPCCode(commErr.Code())
 
 		err = status.Error(code, commErr.Error())
+
+	case validate.IsValidationError(err):
+		err = status.Error(grpcCodes.InvalidArgument, err.Error())
+
+	default:
+		var se GRPCStatusInterface
+		if errors.As(err, &se) {
+			return nil, se.GRPCStatus().Err()
+		} else {
+			if errors.Is(err, context.DeadlineExceeded) {
+				err = status.Error(grpcCodes.DeadlineExceeded, err.Error())
+			} else if errors.Is(err, context.Canceled) {
+				err = status.Error(grpcCodes.Canceled, err.Error())
+			} else {
+				err = status.Error(grpcCodes.Internal, "internal error")
+			}
+		}
 	}
 
 	return res, err

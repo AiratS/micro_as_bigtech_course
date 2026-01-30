@@ -4,6 +4,7 @@ go 1.25.3
 
 require (
 	github.com/AiratS/micro_as_bigtech_course/platform_common v0.0.0-20260129142715-313f4a534e32
+	github.com/brianvoe/gofakeit v3.18.0+incompatible
 	github.com/golang/protobuf v1.5.4
 	google.golang.org/grpc v1.70.0
 	google.golang.org/protobuf v1.36.11
